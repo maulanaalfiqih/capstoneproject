@@ -55,8 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Helper class for creating swipe to dismiss and drag and drop
         // functionality.
-        ItemTouchHelper helper = new ItemTouchHelper(new
-                                                             ItemTouchHelper.SimpleCallback(ItemTouchHelper.LEFT |
+        ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(ItemTouchHelper.LEFT |
                                                                      ItemTouchHelper.RIGHT |
                                                                      ItemTouchHelper.DOWN | ItemTouchHelper.UP,
                                                                      swipeDirs) {
