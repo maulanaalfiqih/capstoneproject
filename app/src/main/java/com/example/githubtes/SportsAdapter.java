@@ -1,6 +1,5 @@
 package com.example.githubtes;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -23,12 +22,6 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
     private ArrayList<Sport> mSportsData;
     private Context mContext;
 
-    /**
-     * Constructor that passes in the sports data and the context.
-     *
-     * @param sportsData ArrayList containing the sports data.
-     * @param context Context of the application.
-     */
     SportsAdapter(Context context, ArrayList<Sport> sportsData) {
         this.mSportsData = sportsData;
         this.mContext = context;
@@ -124,3 +117,4 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
         }
     }
 }
+
