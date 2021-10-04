@@ -125,6 +125,4 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
             mContext.startActivity(detailIntent);
         }
     }
-
-
 }
