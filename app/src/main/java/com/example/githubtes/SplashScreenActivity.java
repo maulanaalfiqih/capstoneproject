@@ -5,22 +5,25 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
+import android.view.Window;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_splash_screen);
 
         getSupportActionBar().hide();
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-        new Handler().postDelayed(new Runnable() {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                finishAffinity();
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
             }
-        }, 4000);
+        }, 4000L); //3000 L = 3 detik
     }
 }
