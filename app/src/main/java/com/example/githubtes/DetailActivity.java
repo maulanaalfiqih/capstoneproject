@@ -1,7 +1,7 @@
 package com.example.githubtes;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,7 +15,9 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         TextView sportsTitle = findViewById(R.id.titleDetail);
         ImageView sportsImage = findViewById(R.id.sportsImageDetail);
+
         sportsTitle.setText(getIntent().getStringExtra("title"));
+
         Glide.with(this).load(getIntent().getIntExtra("image_resource",0))
                 .into(sportsImage);
     }

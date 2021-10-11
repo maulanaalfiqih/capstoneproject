@@ -74,7 +74,7 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
      * ViewHolder class that represents each row of data in the RecyclerView.
      */
     class ViewHolder extends RecyclerView.ViewHolder
-            implements View.OnClickListener {
+            implements View.OnClickListener{
 
         // Member Variables for the TextViews
         private TextView mTitleText;
@@ -89,7 +89,7 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
         ViewHolder(View itemView) {
             super(itemView);
 
-            //Initialize the views
+            // Initialize the views.
             mTitleText = itemView.findViewById(R.id.title);
             mInfoText = itemView.findViewById(R.id.subTitle);
             mSportsImage = itemView.findViewById(R.id.sportsImage);
@@ -102,10 +102,17 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
             // Populate the textviews with data.
             mTitleText.setText(currentSport.getTitle());
             mInfoText.setText(currentSport.getInfo());
-            Glide.with(mContext).load(currentSport.getImageResource()).into(mSportsImage);
 
+            // Load the images into the ImageView using the Glide library.
+            Glide.with(mContext).load(
+                    currentSport.getImageResource()).into(mSportsImage);
         }
 
+        /**
+         * Handle click to show DetailActivity.
+         *
+         * @param view View that is clicked.
+         */
         @Override
         public void onClick(View view) {
             Sport currentSport = mSportsData.get(getAdapterPosition());
