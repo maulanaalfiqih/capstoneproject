@@ -1,5 +1,6 @@
 package com.example.githubtes;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -67,6 +68,12 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
     @Override
     public int getItemCount() {
         return mSportsData.size();
+    }
+
+    void setFilter(ArrayList<Sport> filterModel) {
+        mSportsData = new ArrayList<>();
+        mSportsData.addAll(filterModel);
+        notifyDataSetChanged();
     }
 
 

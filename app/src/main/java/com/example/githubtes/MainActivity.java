@@ -8,10 +8,17 @@ import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,16 +35,38 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+//        //setFilter to Search item
+//        getMenuInflater().inflate(R.menu.search_menu, menu);
+//        SearchView searchView = (SearchView) menu.findItem(R.id.item_search).getActionView();
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                newText = newText.toLowerCase();
+//                ArrayList<Sport> itemFilter = new ArrayList<>();
+//                for (Sport model : mSportsData) {
+//                    String nama = model.getTitle().toLowerCase();
+//                    if (nama.contains(newText)){
+//                        itemFilter.add(model);
+//                    }
+//                }
+//                mAdapter.setFilter(itemFilter);
+//                return true;
+//            }
+//        });
         // Change the label of the menu based on the state of the app.
-        int nightMode = AppCompatDelegate.getDefaultNightMode();
+       int nightMode = AppCompatDelegate.getDefaultNightMode();
         if(nightMode == AppCompatDelegate.MODE_NIGHT_YES){
-            menu.findItem(R.id.night_mode).setTitle(R.string.day_mode);
-        } else{
-            menu.findItem(R.id.night_mode).setTitle(R.string.night_mode);
-        }
-        return true;
-    }
+          menu.findItem(R.id.night_mode).setTitle(R.string.day_mode);
+       } else{
+          menu.findItem(R.id.night_mode).setTitle(R.string.night_mode);
+      }
+       return super.onCreateOptionsMenu(menu);
+   }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -176,4 +205,40 @@ public class MainActivity extends AppCompatActivity {
     public void resetSports(View view) {
         initializeData();
     }
+//    private void getNews() {
+//        final ArrayList<News> listNews = new ArrayList<>();
+//
+//        String baseUrl = "http://newsapi.org/v2/top-headlines?country=id&category=technology&apiKey=b386e2145b06466da08c68a57e5eba93";
+//        AndroidNetworking.get(baseUrl)
+//                .setPriority(Priority.MEDIUM)
+//                .build()
+//                .getAsJSONObject(new JSONObjectRequestListener() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        Log.e("_kotlinResponse", response.toString());
+//
+//                        try {
+//                            JSONArray jsonArray = response.getJSONArray("articles");
+//                            for (int i = 0; i < jsonArray.length(); i++) {
+//                                JSONObject news = jsonArray.getJSONObject(i);
+//                                News itemNews = new News();
+//                                itemNews.setTitle(news.getString("author"));
+//                                itemNews.setDescription(news.getString("description"));
+//                                itemNews.setPhoto(news.getString("urlToImage"));
+//                                listNews.add(itemNews);
+//                            }
+//                            adapter.setData(listNews);
+//                            showLoading(false);
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onError(ANError anError) {
+//                        Log.d("onFailure", anError.getMessage());
+//                    }
+//                });
+//    }
 }
