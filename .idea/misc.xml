@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Kuliah/Semester 5/capstoneproject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Kuliah/Semester 5/capstoneproject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19583333333333333" />
+        <entry key="..\:/Kuliah/Semester 5/capstoneproject/app/src/main/res/drawable/ic_reset.xml" value="0.1" />
+        <entry key="..\:/Kuliah/Semester 5/capstoneproject/app/src/main/res/layout/activity_detail.xml" value="0.1796875" />
+        <entry key="..\:/Kuliah/Semester 5/capstoneproject/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
+        <entry key="..\:/Kuliah/Semester 5/capstoneproject/app/src/main/res/layout/activity_splash_screen.xml" value="0.1796875" />
+        <entry key="..\:/Kuliah/Semester 5/capstoneproject/app/src/main/res/layout/list_item.xml" value="0.1796875" />
+        <entry key="..\:/Kuliah/Semester 5/capstoneproject/app/src/main/res/layout/tes_branch.xml" value="0.1796875" />
+        <entry key="..\:/Kuliah/Semester 5/capstoneproject/app/src/main/res/menu/main_menu.xml" value="0.1" />
         <entry key="..\:/Users/18081/AndroidStudioProjects/pertemuan 6/capstoneproject/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/18081/AndroidStudioProjects/pertemuan 6/capstoneproject/app/src/main/res/menu/main_menu.xml" value="0.1" />
         <entry key="..\:/Users/shiranui/AndroidStudioProjects/githubtes/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
