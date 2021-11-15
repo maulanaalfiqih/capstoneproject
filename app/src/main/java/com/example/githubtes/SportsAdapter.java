@@ -1,6 +1,5 @@
 package com.example.githubtes;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -22,10 +21,21 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
     // Member variables.
     private ArrayList<Sport> mSportsData;
     private Context mContext;
+    private OnItemClickCallback onItemClickCallback;
 
     SportsAdapter(Context context, ArrayList<Sport> sportsData) {
         this.mSportsData = sportsData;
         this.mContext = context;
+    }
+
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
+    }
+
+    public void setSportsData(ArrayList<Sport> items) {
+        mSportsData.clear();
+        mSportsData.addAll(items);
+        notifyDataSetChanged();
     }
 
 
@@ -108,11 +118,11 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
         void bindTo(Sport currentSport){
             // Populate the textviews with data.
             mTitleText.setText(currentSport.getTitle());
-            mInfoText.setText(currentSport.getInfo());
+            mInfoText.setText(currentSport.getDescription());
 
             // Load the images into the ImageView using the Glide library.
             Glide.with(mContext).load(
-                    currentSport.getImageResource()).into(mSportsImage);
+                    currentSport.getPhoto()).into(mSportsImage);
         }
 
         /**
@@ -126,9 +136,13 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
             Intent detailIntent = new Intent(mContext, DetailActivity.class);
             detailIntent.putExtra("title", currentSport.getTitle());
             detailIntent.putExtra("image_resource",
-                    currentSport.getImageResource());
+                    currentSport.getPhoto());
             mContext.startActivity(detailIntent);
         }
+
+    }
+    public interface OnItemClickCallback {
+        void onItemClicked(Sport data);
     }
 }
 
