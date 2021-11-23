@@ -2,10 +2,9 @@ package com.example.githubtes;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatDelegate;
-import android.view.Window;
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
