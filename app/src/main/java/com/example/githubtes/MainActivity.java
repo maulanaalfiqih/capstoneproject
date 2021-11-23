@@ -1,12 +1,15 @@
 package com.example.githubtes;
 
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +20,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,42 +41,59 @@ public class MainActivity extends AppCompatActivity {
     private SportsAdapter mAdapter;
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        // Change the label of the menu based on the state of the app.
-        int nightMode = AppCompatDelegate.getDefaultNightMode();
-        if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
-            menu.findItem(R.id.night_mode).setTitle(R.string.day_mode);
-        } else {
-            menu.findItem(R.id.night_mode).setTitle(R.string.night_mode);
-        }
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        //Check if the correct item was clicked
-        if (item.getItemId() == R.id.night_mode) {
-        }
-        // Get the night mode state of the app.
-        int nightMode = AppCompatDelegate.getDefaultNightMode();
-        //Set the theme mode for the restarted activity
-        if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
-            AppCompatDelegate.setDefaultNightMode
-                    (AppCompatDelegate.MODE_NIGHT_NO);
-        } else {
-            AppCompatDelegate.setDefaultNightMode
-                    (AppCompatDelegate.MODE_NIGHT_YES);
-        }
-// Recreate the activity for the theme change to take effect.
-        recreate();
-        return true;
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Initialize And Assign Variable
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        //Set Home Selected
+        bottomNavigationView.setSelectedItemId(R.id.home);
+
+        //Perform ItemSelectedListener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.home:
+                        return true;
+                    case R.id.search:
+                        startActivity(new Intent(getApplicationContext()
+                                ,Search.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.NightMode:
+
+                        // Get the night mode state of the app.
+                        int nightMode = AppCompatDelegate.getDefaultNightMode();
+                        //Set the theme mode for the restarted activity
+                        if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
+                            AppCompatDelegate.setDefaultNightMode
+                                    (AppCompatDelegate.MODE_NIGHT_NO);
+                        } else {
+                            AppCompatDelegate.setDefaultNightMode
+                                    (AppCompatDelegate.MODE_NIGHT_YES);
+                        }
+                        // Recreate the activity for the theme change to take effect.
+                        recreate();
+                        return true;
+                    case R.id.Bookmark:
+                        startActivity(new Intent(getApplicationContext()
+                                ,Bookmark.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.info:
+                        startActivity(new Intent(getApplicationContext()
+                                ,Info.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+
+                return false;
+            }
+        });
+
         int gridColumnCount =
                 getResources().getInteger(R.integer.grid_column_count);
         int swipeDirs;

@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashScreenActivity"
-    android:id="@+id/splash_screen">
+    android:id="@+id/splash_screen"
+    android:background="#00B3FE">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/duniaberita" />
+        app:srcCompat="@drawable/duniaberitabaru" />
 
 </RelativeLayout>

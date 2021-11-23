@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Githubtes" parent="Theme.AppCompat.DayNight">
+    <style name="Theme.Githubtes" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
 
         <item name="colorPrimary">#00B3FE</item>
