@@ -3,18 +3,17 @@ package com.example.githubtes;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.ItemTouchHelper;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ProgressBar;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -187,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject news = jsonArray.getJSONObject(i);
                         Sport itemNews = new Sport();
-                        itemNews.setTitle(news.getString("author"));
+                        itemNews.setTitle(news.getString("title"));
                         itemNews.setDescription(news.getString("description"));
                         itemNews.setPhoto(news.getString("urlToImage"));
                         listNews.add(itemNews);
