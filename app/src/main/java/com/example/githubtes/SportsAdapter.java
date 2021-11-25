@@ -2,12 +2,13 @@ package com.example.githubtes;
 
 import android.content.Context;
 import android.content.Intent;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
@@ -95,6 +96,7 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
 
         // Member Variables for the TextViews
         private TextView mTitleText;
+        private TextView mAuthorText;
         private TextView mInfoText;
         private ImageView mSportsImage;
 
@@ -107,7 +109,8 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
             super(itemView);
 
             // Initialize the views.
-            mTitleText = itemView.findViewById(R.id.title);
+            mTitleText = itemView.findViewById(R.id.newsTitle);
+            mAuthorText = itemView.findViewById(R.id.title);
             mInfoText = itemView.findViewById(R.id.subTitle);
             mSportsImage = itemView.findViewById(R.id.sportsImage);
 
@@ -118,6 +121,7 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
         void bindTo(Sport currentSport){
             // Populate the textviews with data.
             mTitleText.setText(currentSport.getTitle());
+            mAuthorText.setText(currentSport.getAuthor());
             mInfoText.setText(currentSport.getDescription());
 
             // Load the images into the ImageView using the Glide library.
@@ -135,8 +139,8 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
             Sport currentSport = mSportsData.get(getAdapterPosition());
             Intent detailIntent = new Intent(mContext, DetailActivity.class);
             detailIntent.putExtra("title", currentSport.getTitle());
-            detailIntent.putExtra("image_resource",
-                    currentSport.getPhoto());
+            detailIntent.putExtra("content", currentSport.getContent());
+            detailIntent.putExtra("publishedAt", currentSport.getPublishedAt());
             mContext.startActivity(detailIntent);
         }
 

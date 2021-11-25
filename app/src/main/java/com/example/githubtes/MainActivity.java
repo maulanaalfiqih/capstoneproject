@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,7 +33,6 @@ import java.util.Collections;
 public class MainActivity extends AppCompatActivity {
 
     // Member variables.
-    private ProgressBar progressBar;
     private RecyclerView mRecyclerView;
     private ArrayList<Sport> mSportsData;
     private SportsAdapter mAdapter;
@@ -187,7 +185,10 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject news = jsonArray.getJSONObject(i);
                         Sport itemNews = new Sport();
                         itemNews.setTitle(news.getString("title"));
+                        itemNews.setAuthor(news.getString("author"));
                         itemNews.setDescription(news.getString("description"));
+                        itemNews.setContent(news.getString("content"));
+                        itemNews.setPublishedAt(news.getString("publishedAt"));
                         itemNews.setPhoto(news.getString("urlToImage"));
                         listNews.add(itemNews);
                     }

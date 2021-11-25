@@ -1,11 +1,9 @@
 package com.example.githubtes;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -14,11 +12,13 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         TextView sportsTitle = findViewById(R.id.titleDetail);
-        ImageView sportsImage = findViewById(R.id.sportsImageDetail);
+        TextView content = findViewById(R.id.newsTitleDetail);
+        TextView terbit = findViewById(R.id.subTitleDetail);
 
         sportsTitle.setText(getIntent().getStringExtra("title"));
+        content.setText(getIntent().getStringExtra("content"));
+        terbit.setText(getIntent().getStringExtra("publishedAt"));
 
-        Glide.with(this).load(getIntent().getIntExtra("image_resource",0))
-                .into(sportsImage);
+
     }
 }
