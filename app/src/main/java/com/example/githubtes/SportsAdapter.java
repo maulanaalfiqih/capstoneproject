@@ -121,7 +121,7 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
         void bindTo(Sport currentSport){
             // Populate the textviews with data.
             mTitleText.setText(currentSport.getTitle());
-            mAuthorText.setText(currentSport.getAuthor());
+            mAuthorText.setText("Dibuat Oleh :  "+currentSport.getAuthor());
             mInfoText.setText(currentSport.getDescription());
 
             // Load the images into the ImageView using the Glide library.
@@ -140,7 +140,7 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
             Intent detailIntent = new Intent(mContext, DetailActivity.class);
             detailIntent.putExtra("title", currentSport.getTitle());
             detailIntent.putExtra("content", currentSport.getContent());
-            detailIntent.putExtra("publishedAt", currentSport.getPublishedAt());
+            detailIntent.putExtra("publishedAt","Diterbitkan Pada :  " +  currentSport.getPublishedAt());
             detailIntent.putExtra("urlToImage", currentSport.getPhoto());
             mContext.startActivity(detailIntent);
         }
