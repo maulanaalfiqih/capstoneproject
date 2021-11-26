@@ -14,6 +14,11 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        getSupportActionBar().setIcon(R.drawable.logofix);
+
         TextView sportsTitle = findViewById(R.id.titleDetail);
         TextView content = findViewById(R.id.newsTitleDetail);
         TextView terbit = findViewById(R.id.subTitleDetail);
