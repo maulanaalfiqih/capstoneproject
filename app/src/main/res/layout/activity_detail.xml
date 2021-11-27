@@ -22,6 +22,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/titleDetail"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             android:adjustViewBounds="true" />
 
         <TextView
