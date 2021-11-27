@@ -6,22 +6,155 @@
     android:layout_height="match_parent"
     tools:context=".Info">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Info"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom_navigation"
+        android:layout_alignParentBottom="true"
         android:background="#00B3FE"
-        app:itemTextColor="@color/white"
         app:itemIconTint="@color/white"
-        app:menu="@menu/main_menu"
-        android:layout_alignParentBottom="true"/>
+        app:itemTextColor="@color/white"
+        app:menu="@menu/main_menu" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottom_navigation">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottom_navigation"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/header"
+                android:layout_width="wrap_content"
+                android:layout_height="135dp"
+                android:src="@drawable/header" />
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="300dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-60dp"
+                android:src="@drawable/logobiru" />
+
+            <ImageView
+                android:id="@+id/presenter"
+                android:layout_width="wrap_content"
+                android:layout_height="170dp"
+                android:layout_below="@+id/header"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/presenter" />
+
+            <TextView
+                android:id="@+id/tanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/presenter"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="19 SEPTEMBER 2021"
+                android:textColor="#F6B21B"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/nama_tim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tanggal"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="Created by : Tim Hore"
+                android:fontFamily="@font/quicksand_bold"
+                android:textStyle="bold"
+                android:textColor="#00B3FE"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/deskripsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nama_tim"
+                android:layout_marginStart="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginBottom="25dp"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:text="Dunia Berita adalah sebuah aplikasi yang memberikan berita terkini yang baru saja terjadi. Berita yang disampaikan merupakan berita fakta, aktual, dan terpercaya. Dunia Berita dapat diakses di playstore dan appstore smartphone kalian."
+                android:fontFamily="@font/quicksand_bold"/>
+
+            <TextView
+                android:id="@+id/pembatas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="_____________"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:fontFamily="@font/quicksand_bold"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/title_image_slide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"
+                android:text="OUR TEAM"
+                android:textColor="#F6B21B"
+                android:fontFamily="@font/quicksand_bold"
+                android:textStyle="bold"/>
+
+            <com.smarteist.autoimageslider.SliderLayout
+                android:id="@+id/our_team"
+                android:layout_width="350dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="10dp"
+                android:padding="20dp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/more_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:text="For More Information"
+                android:textColor="#00B3FE"
+                android:fontFamily="@font/quicksand_bold"/>
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="duniaberita@gmail.com"
+                android:textColor="#00B3FE"
+                android:fontFamily="@font/quicksand_bold"/>
+
+            <ImageView
+                android:id="@+id/footer"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:src="@drawable/footer"
+                android:layout_marginTop="-70dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
