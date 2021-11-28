@@ -1,9 +1,11 @@
 package com.example.githubtes;
 
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -36,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ArrayList<Sport> mSportsData;
     private SportsAdapter mAdapter;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+    public void search (){
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,13 +181,12 @@ public class MainActivity extends AppCompatActivity {
         // Attach the helper to the RecyclerView.
         helper.attachToRecyclerView(mRecyclerView);
 
-
     }
 
     /**
      * Initialize the sports data from resources.
      */
-    private void initializeData() {
+    public void initializeData() {
         final ArrayList<Sport> listNews = new ArrayList<>();
         String baseUrl = "http://newsapi.org/v2/top-headlines?country=id&category=technology&apiKey=b386e2145b06466da08c68a57e5eba93";
         AndroidNetworking.get(baseUrl).setPriority(Priority.MEDIUM).build().getAsJSONObject(new JSONObjectRequestListener() {
