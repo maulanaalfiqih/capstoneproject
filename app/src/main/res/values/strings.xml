@@ -7,6 +7,8 @@
     <string name="night_mode">Night Mode</string>
     <string name="day_mode">Day Mode</string>
     <string name="cari">Search</string>
+    <string name="instructions">Search your news....</string>
+    <string name="button_text">Search News</string>
 
 
     <string-array name="sports_titles">
