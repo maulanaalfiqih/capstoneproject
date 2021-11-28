@@ -4,15 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:background="@drawable/shape01"
     tools:context=".Search">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true" />
+    <EditText
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/shape02"
+        android:hint="@string/instructions"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray1"
+        android:theme="@style/CardView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/searchButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="-45dp"
+        android:layout_toRightOf="@id/search_bar"
+        android:onClick="searchNews"
+        android:src="@drawable/ic_search"
+        android:tint="@color/black"
+        android:background="@drawable/shape01"
+        app:layout_constraintTop_toBottomOf="@+id/search_bar" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
