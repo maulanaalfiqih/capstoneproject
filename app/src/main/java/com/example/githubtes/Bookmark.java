@@ -3,19 +3,34 @@ package com.example.githubtes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.githubtes.dataBookmark.BookmarkDatabase;
+import com.example.githubtes.dataBookmark.BookmarkList;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.List;
+
 public class Bookmark extends AppCompatActivity {
+
+    private RecyclerView mRecyclerView;
+    private BookmarkDatabase db;
+    public static List<BookmarkList> mlist;
+    private BookmarkAdapter bookmarkAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookmark);
+
+        db = Room.databaseBuilder(getApplicationContext(),
+                BookmarkDatabase.class, "bookmarkDB2").allowMainThreadQueries().build();
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -69,5 +84,13 @@ public class Bookmark extends AppCompatActivity {
                 return false;
             }
         });
+
+        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        mlist = db.bookmarkDao().selectAllBookmark();
+
+        bookmarkAdapter = new BookmarkAdapter(getApplicationContext(), mlist);
+        mRecyclerView.setAdapter(bookmarkAdapter);
+
     }
 }
