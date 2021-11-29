@@ -2,17 +2,24 @@ package com.example.githubtes;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import com.bumptech.glide.Glide;
+import com.example.githubtes.dataBookmark.BookmarkDatabase;
+import com.example.githubtes.dataBookmark.BookmarkList;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /***
  * The adapter class for the RecyclerView, contains the sports data.
@@ -23,6 +30,8 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
     private ArrayList<Sport> mSportsData;
     private Context mContext;
     private OnItemClickCallback onItemClickCallback;
+    private List<BookmarkList> bookmarkList;
+    private BookmarkDatabase db;
 
     SportsAdapter(Context context, ArrayList<Sport> sportsData) {
         this.mSportsData = sportsData;
@@ -64,11 +73,61 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
     @Override
     public void onBindViewHolder(SportsAdapter.ViewHolder holder,
                                  int position) {
+        BookmarkList bookmarkList = new BookmarkList();
         // Get current sport.
         Sport currentSport = mSportsData.get(position);
-
         // Populate the textviews with data.
         holder.bindTo(currentSport);
+
+        String title = mSportsData.get(position).getTitle();
+        String author = mSportsData.get(position).getAuthor();
+        String description = mSportsData.get(position).getDescription();
+        String content = mSportsData.get(position).getContent();
+        String publish = mSportsData.get(position).getPublishedAt();
+        String image = mSportsData.get(position).getPhoto();
+
+        db = Room.databaseBuilder(mContext,BookmarkDatabase.class, "bookmarkDB2").build();
+        if (MainActivity.db.bookmarkDao().isBookmark(title) == 1){
+            holder.bookbtn.setImageResource(R.drawable.ic_favorite);
+        }else {
+            holder.bookbtn.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+            holder.bookbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int status_fav = 0;
+                    bookmarkList.setTitle(title);
+                    bookmarkList.setAuthor(author);
+                    bookmarkList.setDescription(description);
+                    bookmarkList.setContent(content);
+                    bookmarkList.setPublish(publish);
+                    bookmarkList.setPhoto(image);
+                    bookmarkList.setStatus_fav(status_fav);
+                    insertDataBookmark(bookmarkList);
+
+                    if (MainActivity.db.bookmarkDao().isBookmark(title) != 1) {
+                        holder.bookbtn.setImageResource(R.drawable.ic_favorite);
+                    } else {
+                        holder.bookbtn.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+                    }
+                }
+            });
+        }
+    }
+
+    private void insertDataBookmark(final BookmarkList bookmarkList){
+
+        new AsyncTask<Void, Void, Long>(){
+            @Override
+            protected Long doInBackground(Void... voids) {
+                long status = db.bookmarkDao().addData(bookmarkList);
+                return status;
+            }
+
+            @Override
+            protected void onPostExecute(Long status) {
+                Toast.makeText(mContext, "Berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+            }
+        }.execute();
     }
 
     /**
@@ -98,7 +157,7 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
         private TextView mTitleText;
         private TextView mAuthorText;
         private TextView mInfoText;
-        private ImageView mSportsImage;
+        private ImageView mSportsImage, bookbtn ;
 
         /**
          * Constructor for the ViewHolder, used in onCreateViewHolder().
@@ -113,6 +172,7 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
             mAuthorText = itemView.findViewById(R.id.title);
             mInfoText = itemView.findViewById(R.id.subTitle);
             mSportsImage = itemView.findViewById(R.id.sportsImage);
+            bookbtn = itemView.findViewById(R.id.bookbtn);
 
             // Set the OnClickListener to the entire view.
             itemView.setOnClickListener(this);
