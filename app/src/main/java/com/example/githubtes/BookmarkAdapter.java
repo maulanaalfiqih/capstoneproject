@@ -2,6 +2,7 @@ package com.example.githubtes;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
@@ -17,7 +20,10 @@ import com.example.githubtes.dataBookmark.BookmarkDatabase;
 import com.example.githubtes.dataBookmark.BookmarkList;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 /***
  * The adapter class for the RecyclerView, contains the sports data.
@@ -56,7 +62,7 @@ class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHolder>  
      * @return The newly created ViewHolder.
      */
     @Override
-    public ViewHolder onCreateViewHolder(
+    public BookmarkAdapter.ViewHolder onCreateViewHolder(
             ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(mContext).
                 inflate(R.layout.list_item, parent, false));
@@ -69,7 +75,7 @@ class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHolder>  
      * @param position The adapter position.
      */
     @Override
-    public void onBindViewHolder(ViewHolder holder,
+    public void onBindViewHolder(BookmarkAdapter.ViewHolder holder,
                                  int position) {
         BookmarkList bl = bookmarkList.get(position);
 

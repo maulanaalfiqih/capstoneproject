@@ -15,6 +15,7 @@ import com.example.githubtes.dataBookmark.BookmarkDatabase;
 import com.example.githubtes.dataBookmark.BookmarkList;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Bookmark extends AppCompatActivity {
