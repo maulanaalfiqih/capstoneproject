@@ -43,6 +43,9 @@ public class Search extends AppCompatActivity {
                 BookmarkDatabase.class, "bookmarkDB2").allowMainThreadQueries().build();
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        getSupportActionBar().setIcon(R.drawable.logofix);
+
         //Initialize And Assign Variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         //Set Home Selected
