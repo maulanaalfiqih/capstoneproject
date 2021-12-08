@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void initializeData() {
         final ArrayList<Sport> listNews = new ArrayList<>();
-        String baseUrl = "http://newsapi.org/v2/top-headlines?country=id&category=technology&apiKey=b386e2145b06466da08c68a57e5eba93";
+        String baseUrl = "http://newsapi.org/v2/top-headlines?country=id&category=technology&apiKey=2b9a3585cfdc442ea8539551101f596c";
         AndroidNetworking.get(baseUrl).setPriority(Priority.MEDIUM).build().getAsJSONObject(new JSONObjectRequestListener() {
             @Override
             public void onResponse(JSONObject response) {
